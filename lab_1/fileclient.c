@@ -20,6 +20,11 @@ int main(int argc,char *argv[])
   inet_pton(AF_INET,argv[1],&address.sin_addr);
   if (connect(create_socket,(struct sockaddr *) &address, sizeof(address)) == 0)
   printf("The connection was accepted with the server %s...\n",argv[1]);
+  if(argc<3)
+  {
+    printf("Insufficient arguments\n");
+    exit(0);
+  }
   printf("The Filename to Request : %s\n",argv[2]);
   strcpy(fname,argv[2]);
   send(create_socket, fname, sizeof(fname), 0);
